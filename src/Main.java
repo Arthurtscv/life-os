@@ -2,32 +2,74 @@ import java.util.Scanner;
 
 void main() {
     Scanner teclado = new Scanner(System.in);
+    int opcao;
+    double saldo_atual = 0;
+    double totalReceitas = 0;
+    double totalDespesas = 0;
+    do {
     System.out.printf("========= LIFE OS =========%n%n");
     System.out.println("1 - Cadastrar receita");
-    System.out.println("2 - Consultar despesa");
-    System.out.println("3 - Ver saldo");
+    System.out.println("2 - Cadastrar despesa");
+    System.out.println("3 - Ver resumo");
     System.out.printf("0 - Sair%n%n");
     System.out.print("Escolha uma opção: ");
-    int opcao = teclado.nextInt();
+    opcao = teclado.nextInt();
     switch (opcao) {
         case 0:
-            System.out.println("Saindo do sistema");
+            System.out.println("Saindo do LifeOS");
+            System.out.printf("------------------------------%n");
             break;
 
         case 1:
-            System.out.println("Você escolheu cadastrar receita");
+            System.out.print("Qual o valor da receita? R$");
+            double valor_receita = teclado.nextDouble();
+            if (valor_receita <= 0) {
+                System.out.println("Valor inválido. A receita deve ser maior que zero.");
+                System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
+                System.out.printf("------------------------------%n");
+                break;
+            }
+            saldo_atual += valor_receita;
+            totalReceitas +=valor_receita;
+            System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
+            System.out.printf("------------------------------%n");
             break;
 
         case 2:
-            System.out.println("Você escolheu cadastrar despesa");
+            System.out.print("Qual o valor da despesa? R$");
+            double valor_despesa = teclado.nextDouble();
+            if (valor_despesa <= 0) {
+                System.out.println("Valor inválido. A despesa deve ser maior que zero.");
+                System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
+                System.out.printf("------------------------------%n");
+                break;
+            }
+            saldo_atual -= valor_despesa;
+            totalDespesas +=valor_despesa;
+            System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
+            System.out.printf("------------------------------%n");
             break;
 
         case 3:
-            System.out.println("Você escolheu ver saldo");
+            System.out.println("========= RESUMO =========");
+            System.out.println("Total de receitas: " + totalReceitas);
+            System.out.println("Total de despesas: " + totalDespesas);
+            System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
+            if (saldo_atual > 0) {
+                System.out.println("Situação: Positivo");
+            } else if (saldo_atual == 0) {
+                System.out.println("Situação: Zerado");
+            } else {
+                System.out.println("Situação: Negativo");
+            }
+            System.out.printf("------------------------------%n");
             break;
 
         default:
-            System.out.println("Opção inválida");
+            System.out.println("Opção inválida. Tente novamente.");
+            System.out.printf("------------------------------%n");
             break;
     }
+    } while (opcao != 0);
+    teclado.close();
 }
