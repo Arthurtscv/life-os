@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 void main() {
     Scanner teclado = new Scanner(System.in);
@@ -6,11 +8,13 @@ void main() {
     double saldo_atual = 0;
     double totalReceitas = 0;
     double totalDespesas = 0;
+    List<String> movimentacoes =  new ArrayList<>();
     do {
     System.out.printf("========= LIFE OS =========%n%n");
     System.out.println("1 - Cadastrar receita");
     System.out.println("2 - Cadastrar despesa");
     System.out.println("3 - Ver resumo");
+    System.out.println("4 - Ver extrato");
     System.out.printf("0 - Sair%n%n");
     System.out.print("Escolha uma opção: ");
     opcao = teclado.nextInt();
@@ -31,6 +35,7 @@ void main() {
             }
             saldo_atual += valor_receita;
             totalReceitas +=valor_receita;
+            movimentacoes.add("Receita  | Valor = R$" + valor_receita);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
             System.out.printf("------------------------------%n");
             break;
@@ -46,6 +51,7 @@ void main() {
             }
             saldo_atual -= valor_despesa;
             totalDespesas +=valor_despesa;
+            movimentacoes.add("Despesa | Valor = R$-" + valor_despesa);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
             System.out.printf("------------------------------%n");
             break;
@@ -64,6 +70,19 @@ void main() {
             }
             System.out.printf("------------------------------%n");
             break;
+
+        case 4:
+            if (!movimentacoes.isEmpty()) {
+                System.out.println("========= EXTRATO =========");
+                    for (int i = 0; i < movimentacoes.size(); i++) {
+                        System.out.println((i+1) + " - " + movimentacoes.get(i));
+                    }
+                System.out.println("===========================");
+            } else {
+                System.out.println("Nenhuma movimentação cadastrada.");
+            }
+            break;
+
 
         default:
             System.out.println("Opção inválida. Tente novamente.");
