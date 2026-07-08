@@ -83,7 +83,6 @@ void main() {
             }
             break;
 
-
         default:
             System.out.println("Opção inválida. Tente novamente.");
             System.out.printf("------------------------------%n");
