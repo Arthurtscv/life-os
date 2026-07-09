@@ -8,6 +8,9 @@ void main() {
     double saldo_atual = 0;
     double totalReceitas = 0;
     double totalDespesas = 0;
+    double maiorDespesa = 0;
+    String tipo_receita;
+    String tipo_despesa;
     List<String> movimentacoes =  new ArrayList<>();
     do {
     System.out.printf("========= LIFE OS =========%n%n");
@@ -33,9 +36,11 @@ void main() {
                 System.out.printf("------------------------------%n");
                 break;
             }
+            System.out.print("Qual o tipo da receita? ");
+            tipo_receita = teclado.next();
             saldo_atual += valor_receita;
             totalReceitas +=valor_receita;
-            movimentacoes.add("Receita  | Valor = R$" + valor_receita);
+            movimentacoes.add("Receita | " + tipo_receita + " | Valor = R$" + valor_receita);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
             System.out.printf("------------------------------%n");
             break;
@@ -49,9 +54,14 @@ void main() {
                 System.out.printf("------------------------------%n");
                 break;
             }
+            System.out.print("Qual o tipo da despesa? ");
+            tipo_despesa = teclado.next();
             saldo_atual -= valor_despesa;
-            totalDespesas +=valor_despesa;
-            movimentacoes.add("Despesa | Valor = R$-" + valor_despesa);
+            totalDespesas += valor_despesa;
+            if (valor_despesa > maiorDespesa) {
+                maiorDespesa = valor_despesa;
+            }
+            movimentacoes.add("Despesa | " + tipo_despesa + " | Valor = R$-" + valor_despesa);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
             System.out.printf("------------------------------%n");
             break;
@@ -61,6 +71,8 @@ void main() {
             System.out.println("Total de receitas: " + totalReceitas);
             System.out.println("Total de despesas: " + totalDespesas);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
+            System.out.println("Quantidade de movimentações: " + movimentacoes.size());
+            System.out.println("Maior despesa: R$" + maiorDespesa);
             if (saldo_atual > 0) {
                 System.out.println("Situação: Positivo");
             } else if (saldo_atual == 0) {
