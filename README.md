@@ -21,3 +21,14 @@ Projeto de estudos em Java.
 - atualização de saldo
 - validação de valores
 - resumo financeiro simples
+
+## Dia 4
+- ArrayList
+- add()
+- size()
+- get()
+- for
+- histórico de movimentações
+- descrição de receitas e despesas
+- listagem de movimentações
+- maior despesa
