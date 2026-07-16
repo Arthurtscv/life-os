@@ -23,7 +23,7 @@ public class Movimentacoes {
             if (valor_receita <= 0) {
                 System.out.println("Valor inválido. A receita deve ser maior que zero.");
                 System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
-                System.out.printf("------------------------------%n");
+                Menu.mostrarSeparador();
                 return;
             }
             System.out.print("Qual o tipo da receita? ");
@@ -32,10 +32,9 @@ public class Movimentacoes {
             totalReceitas +=valor_receita;
             movi.add("Receita | " + tipo_receita + " | Valor = R$" + valor_receita);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
-            System.out.printf("------------------------------%n");
+            Menu.mostrarSeparador();
 
     }
-
 
     public static void despesa() {
 
@@ -46,7 +45,7 @@ public class Movimentacoes {
             if (valor_despesa <= 0 ) {
                 System.out.println("Valor inválido. A despesa deve ser maior que zero.");
                 System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
-                System.out.printf("------------------------------%n");
+                Menu.mostrarSeparador();
                 return;
             }
 
@@ -59,7 +58,7 @@ public class Movimentacoes {
             }
             movi.add("Despesa | " + tipo_despesa + " | Valor = R$-" + valor_despesa);
             System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
-            System.out.printf("------------------------------%n");
+            Menu.mostrarSeparador();
 
     }
 
@@ -71,6 +70,12 @@ public class Movimentacoes {
         System.out.printf("Saldo atual: R$%.2f%n", saldo_atual);
         System.out.println("Quantidade de movimentações: " + movi.size());
         System.out.println("Maior despesa: R$" + maiorDespesa);
+        definirSituacao();
+        Menu.mostrarSeparador();
+
+    }
+
+    public static void definirSituacao() {
         if (saldo_atual > 0) {
             System.out.println("Situação: Positivo");
         } else if (saldo_atual == 0) {
@@ -78,8 +83,6 @@ public class Movimentacoes {
         } else {
             System.out.println("Situação: Negativo");
         }
-        System.out.printf("------------------------------%n");
-
     }
 
     public static void movimentacoes() {

@@ -15,4 +15,8 @@ public class Menu {
         System.out.printf("------------------------------%n");
     }
 
+    public static void mostrarSeparador(){
+        System.out.printf("------------------------------%n");
+    }
+
 }
