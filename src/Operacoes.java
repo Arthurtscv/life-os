@@ -52,6 +52,8 @@ public class Operacoes {
         } else {
             System.out.println("Nenhuma despesa cadastrada!");
         }
+        double percentualGastos = (totalDespesas / totalReceitas) * 100;
+        System.out.printf("Percentual de gastos: %.2f%%%n", percentualGastos);
         String situacao = definirSituacao(saldoAtual);
         System.out.println("Situacao: " + situacao);
         Menu.mostrarSeparador();
