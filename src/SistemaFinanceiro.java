@@ -6,30 +6,30 @@ public class SistemaFinanceiro {
     public void iniciar() {
 
         Scanner teclado = new Scanner(System.in);
-        int opcao;
+        String opcao;
 
         do {
             Menu.mostraMenu();
-            opcao = teclado.nextInt();
+            opcao = teclado.nextLine();
             switch (opcao) {
-                case 0:
+                case "0":
                     Menu.sairMenu();
                     break;
 
-                case 1:
-                    Movimentacoes.receita();
+                case "1":
+                    Operacoes.receita(teclado);
                     break;
 
-                case 2:
-                    Movimentacoes.despesa();
+                case "2":
+                    Operacoes.despesa(teclado);
                     break;
 
-                case 3:
-                    Movimentacoes.resumo();
+                case "3":
+                    Operacoes.resumo();
                     break;
 
-                case 4:
-                    Movimentacoes.movimentacoes();
+                case "4":
+                    Operacoes.extrato();
                     break;
 
                 default:
@@ -37,7 +37,7 @@ public class SistemaFinanceiro {
                     System.out.printf("------------------------------%n");
                     break;
             }
-        } while (opcao != 0);
+        } while (!opcao.equals("0"));
         teclado.close();
     }
 

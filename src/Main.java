@@ -1,6 +1,10 @@
-  void main() {
+public class Main{
 
-    SistemaFinanceiro sistema = new SistemaFinanceiro();
-    sistema.iniciar();
+    public static void main(String[] args) {
+        SistemaFinanceiro sistema = new SistemaFinanceiro();
+        sistema.iniciar();
+    }
+
 }
+
 
